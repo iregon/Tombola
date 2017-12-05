@@ -4,7 +4,7 @@ angular.module('starter.controllers', [
 
 .factory('MyData', function($websocket) {
   // Open a WebSocket connection
-  var dataStream = $websocket('ws://website.com/data');
+  var dataStream = $websocket('ws://127.0.0.1:80');
 
   var collection = [];
 
