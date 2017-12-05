@@ -1,4 +1,26 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', [
+  'ngWebSocket'
+])
+
+.factory('MyData', function($websocket) {
+  // Open a WebSocket connection
+  var dataStream = $websocket('ws://website.com/data');
+
+  var collection = [];
+
+  dataStream.onMessage(function(message) {
+    collection.push(JSON.parse(message.data));
+  });
+
+  var methods = {
+    collection: collection,
+    get: function() {
+      dataStream.send(JSON.stringify({ action: 'get' }));
+    }
+  };
+
+  return methods;
+})
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,15 +63,16 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('PlaylistsCtrl', function($scope, MyData) {
+  // $scope.playlists = [
+  //   { title: 'Reggae', id: 1 },
+  //   { title: 'Chill', id: 2 },
+  //   { title: 'Dubstep', id: 3 },
+  //   { title: 'Indie', id: 4 },
+  //   { title: 'Rap', id: 5 },
+  //   { title: 'Cowbell', id: 6 }
+  // ];
+  console.log($scope.MyData = MyData);
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
