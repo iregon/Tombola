@@ -2,7 +2,7 @@ angular.module('starter.controllers', [
   'ngWebSocket'
 ])
 
-.factory('MyData', function($websocket) {
+.factory('websocketData', function($websocket) {
   // Open a WebSocket connection
   var dataStream = $websocket('ws://127.0.0.1:80');
 
@@ -18,6 +18,14 @@ angular.module('starter.controllers', [
       dataStream.send(JSON.stringify({ action: 'get' }));
     }
   };
+
+  // function send(text) {
+  //   var returns;
+  //   dataStream.send(text, returns);
+  //   console.log(returns);
+  // }
+
+
 
   return methods;
 })
@@ -63,7 +71,7 @@ angular.module('starter.controllers', [
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, MyData) {
+.controller('PlaylistsCtrl', function($scope, $websocket) {
   // $scope.playlists = [
   //   { title: 'Reggae', id: 1 },
   //   { title: 'Chill', id: 2 },
@@ -72,7 +80,39 @@ angular.module('starter.controllers', [
   //   { title: 'Rap', id: 5 },
   //   { title: 'Cowbell', id: 6 }
   // ];
-  console.log($scope.MyData = MyData);
+  // console.log($scope.websocketData = websocketData);
+
+  // websocketData.send("aaaa");
+
+  var socket = new WebSocket('ws://127.0.0.1:8080/Tombola_Server_NetBeans/actions');
+  socket.onmessage = function (event) {
+    console.log(JSON.parse(event.data));
+  };
+  var DeviceAction = {
+    action: "add"
+  };
+
+  this.send = function (message, callback) {
+    this.waitForConnection(function () {
+        socket.send(message);
+        if (typeof callback !== 'undefined') {
+          callback();
+        }
+    }, 1000);
+};
+
+this.waitForConnection = function (callback, interval) {
+    if (socket.readyState === 1) {
+        callback();
+    } else {
+        var that = this;
+        // optional: implement backoff for interval here
+        setTimeout(function () {
+            that.waitForConnection(callback, interval);
+        }, interval);
+    }
+};
+  this.send(JSON.stringify(DeviceAction), function() {console.log(JSON.stringify(DeviceAction));});
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
