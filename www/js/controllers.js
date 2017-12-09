@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [
-  'ngWebSocket'
-])
+angular.module('starter.controllers', [])
 
 .factory('websocketData', function($websocket) {
   // Open a WebSocket connection
