@@ -85,34 +85,34 @@ angular.module('starter.controllers', [
   // websocketData.send("aaaa");
 
   var socket = new WebSocket('ws://127.0.0.1:8080/Tombola_Server_NetBeans/actions');
+
   socket.onmessage = function (event) {
     console.log(JSON.parse(event.data));
   };
+
   var DeviceAction = {
     action: "add"
   };
 
-  this.send = function (message, callback) {
+  this.send = function (message) {
     this.waitForConnection(function () {
-        socket.send(message);
-        if (typeof callback !== 'undefined') {
-          callback();
-        }
+      socket.send(message);
     }, 1000);
-};
+  };
 
-this.waitForConnection = function (callback, interval) {
+  this.waitForConnection = function (callback, interval) {
     if (socket.readyState === 1) {
-        callback();
+      callback();
     } else {
-        var that = this;
-        // optional: implement backoff for interval here
-        setTimeout(function () {
-            that.waitForConnection(callback, interval);
-        }, interval);
+      var that = this;
+      // optional: implement backoff for interval here
+      setTimeout(function () {
+        that.waitForConnection(callback, interval);
+      }, interval);
     }
-};
-  this.send(JSON.stringify(DeviceAction), function() {console.log(JSON.stringify(DeviceAction));});
+  };
+
+  this.send(JSON.stringify(DeviceAction));
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
