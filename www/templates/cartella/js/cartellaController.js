@@ -1,6 +1,5 @@
 angular.module('starter')
-.controller('CartellaCtrl', ['serverManager', function($scope, $stateParams, serverManager) {
-  console.log(serverManager);
+.controller('CartellaCtrl', function($scope, $stateParams, serverManager) {
   serverManager.connectToServer();
   var cartella = {
     numero: 1,
@@ -92,4 +91,4 @@ angular.module('starter')
   $scope.getAllCartelle = function() {
     return cartelle;
   }
-}]);
+});
