@@ -1,20 +1,14 @@
 <ion-view view-title="Cartella">
   <ion-content>
     <div class="Cartella_listaCartelle">
-      <div class="Cartella_minimapCartella" ng-repeat="cartella in cartelle">
-        <p>{{cartella}}</p>
+      <div class="Cartella_minimapCartelle" ng-repeat="cartella in getAllCartelle()">
+        <p class="Cartella_minimapCartella">{{cartella.numero}}</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
-      <div class="col">.col</div>
+    <div class="row" ng-repeat="riga in getCartella().righe">
+      <div class="col Cartella_cellaCartella" ng-repeat="cella in riga">
+        <p class="Cartella_contenutoCellaCartella">{{cella}}</p>
+      </div>
     </div>
   </ion-content>
 </ion-view>
