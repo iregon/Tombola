@@ -1,0 +1,23 @@
+.Login_item {
+  border-bottom-color: #fff;
+}
+
+.Login_itemAllBorders {
+  border-color: #fff;
+  /*padding: 0;*/
+}
+
+.Login_itemAllBorders p {
+  width: 100%;
+  text-align: center;
+  color: #999;
+}
+
+.Login_noPadding {
+  padding: 0;
+}
+
+.Login_inputNickname {
+  /*border-color: #ddd;*/
+  margin: 20px 20px 1px 20px;
+}
