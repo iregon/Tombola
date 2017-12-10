@@ -1,3 +1,8 @@
+.Cartella_listaCartelle {
+  width: 100%;
+  overflow: hidden;
+}
+
 .Cartella_minimapCartelle {
   float: left;
   width: 40px;

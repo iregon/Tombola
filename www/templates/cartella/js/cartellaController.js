@@ -1,8 +1,10 @@
-angular.module('starter.controllers')
-.controller('CartellaCtrl', function($scope, $stateParams) {
-
+angular.module('starter')
+.controller('CartellaCtrl', ['serverManager', function($scope, $stateParams, serverManager) {
+  console.log(serverManager);
+  serverManager.connectToServer();
   var cartella = {
     numero: 1,
+    nome: "Allievo",
     righe: {
       0: {
         0: "",
@@ -42,6 +44,7 @@ angular.module('starter.controllers')
 
   var cartella2 = {
     numero: 2,
+    nome: "Abbondanza",
     righe: {
       0: {
         0: "",
@@ -83,11 +86,10 @@ angular.module('starter.controllers')
 
   $scope.getCartella = function() {
     var numCartella = $stateParams.num;
-    // console.log(JSON.stringify(cartelle[numCartella]));
     return cartelle[numCartella];
   }
 
   $scope.getAllCartelle = function() {
     return cartelle;
   }
-});
+}]);

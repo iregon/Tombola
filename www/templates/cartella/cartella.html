@@ -5,6 +5,9 @@
         <p class="Cartella_minimapCartella">{{cartella.numero}}</p>
       </div>
     </div>
+    <div class="class">
+      <p ng-bind="getCartella().nome"></p>
+    </div>
     <div class="row" ng-repeat="riga in getCartella().righe">
       <div class="col Cartella_cellaCartella" ng-repeat="cella in riga">
         <p class="Cartella_contenutoCellaCartella">{{cella}}</p>
