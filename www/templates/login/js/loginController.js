@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('LoginCtrl', function($scope, $rootScope, serverManager) {
+.controller('LoginCtrl', function($scope, $rootScope, serverManager, $location) {
   serverManager.connectToServer();
 
   $scope.doLogin = function() {
@@ -7,7 +7,8 @@ angular.module('starter')
       nome: $scope.nickname,
       anunymous: "false",
     }
-    $rootScope.userData = data;
+    $rootScope.loginData = data;
+    switchToSelectpage();
   }
 
   $scope.doLoginAnonymous = function() {
@@ -15,7 +16,11 @@ angular.module('starter')
       nome: "",
       anunymous: "true",
     }
-    $rootScope.userData = data;
+    $rootScope.loginData = data;
+    switchToSelectpage();
   }
 
+  var switchToSelectpage = function() {
+    $location.path("selectMode");
+  }
 });

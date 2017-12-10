@@ -47,6 +47,15 @@ angular.module('starter', ['ionic', 'starter'])
         controller: 'LoginCtrl'
       }
     }
+  })
+  .state('app.selectMode', {
+    url: '/selectMode',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/selectMode/selectMode.html',
+        controller: 'SelectModeCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
