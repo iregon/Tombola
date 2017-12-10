@@ -3,9 +3,15 @@ angular.module('starter')
   var socket;
   return {
     connectToServer: function() {
-      // Open a WebSocket connection
-      socket = new WebSocket('ws://127.0.0.1:8080/Tombola_Server_NetBeans/actions');
-      console.log("connessione");
+      try {
+        // Open a WebSocket connection
+        socket = new WebSocket('ws://127.0.0.1:8080/Tombola_Server_NetBeans/actions');
+        console.log("connessione");
+        return "OK";
+      }
+      catch(err) {
+        return err;
+      }
     },
     sendData: function(data) {
       this.send = function (message) {
