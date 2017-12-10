@@ -1,6 +1,6 @@
 angular.module('starter')
 .controller('CartellaCtrl', function($scope, $stateParams, serverManager) {
-  serverManager.connectToServer();
+  
   var cartella = {
     numero: 1,
     nome: "Allievo",

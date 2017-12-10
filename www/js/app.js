@@ -24,7 +24,6 @@ angular.module('starter', ['ionic', 'starter'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('app', {
       url: '/app',
       abstract: true,
@@ -39,7 +38,16 @@ angular.module('starter', ['ionic', 'starter'])
           controller: 'CartellaCtrl'
         }
       }
+  })
+  .state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login/login.html',
+        controller: 'LoginCtrl'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/cartella');
+  $urlRouterProvider.otherwise('/app/login');
 });
