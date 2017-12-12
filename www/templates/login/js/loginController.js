@@ -1,6 +1,22 @@
 angular.module('starter')
-.controller('LoginCtrl', function($scope, $rootScope, serverManager, $location, $ionicPopup) {
-  serverManager.connectToServer();
+.controller('LoginCtrl', function(
+  $scope,
+  $rootScope,
+  serverManager,
+  $location,
+  $ionicPopup,
+  $window) {
+    
+  if(!serverManager.connectToServer() === "OK") {
+    var alertPopup = $ionicPopup.alert({
+      title: '<img src="img/no_internet.png">',
+      template: 'Impossibile collegarsi al server'
+    });
+
+    alertPopup.then(function(res) {
+      $window.close()
+    });
+  }
 
   $scope.doLogin = function() {
     if($scope.login.nickname !== undefined) {
@@ -13,7 +29,7 @@ angular.module('starter')
     }
     else {
       var alertPopup = $ionicPopup.alert({
-        title: 'ERRORE',
+        title: '<img src="img/warning.png">',
         template: 'Devi inserire un nickname'
       });
 

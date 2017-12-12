@@ -1,5 +1,12 @@
-<ion-view view-title="Browse">
+<ion-view view-title="Scegli la modalit&agrave; di gioco">
   <ion-content>
-    <h1>Browse</h1>
+    <ion-list radio-group>
+      <ion-radio ng-model="choice" ng-value="'n'" checked>Giocatore normale</ion-radio>
+      <ion-radio ng-model="choice" ng-value="'t'">Tabellone</ion-radio>
+
+      <label class="item SelectMode_button">
+        <button class="button button-block button-positive" ng-click="">Gioca!</button>
+      </label>
+    </ion-list>
   </ion-content>
 </ion-view>
