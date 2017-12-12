@@ -1,3 +1,5 @@
-.SelectMode_button {
+.SelectMode_button, .SelectMode_ionList {
   border-bottom-color: #fff;
+  border-left-color: #fff;
+  border-right-color: #fff;
 }

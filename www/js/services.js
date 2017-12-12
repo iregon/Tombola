@@ -13,6 +13,7 @@ angular.module('starter')
         return err;
       }
     },
+
     sendData: function(data) {
       this.send = function (message) {
         this.waitForConnection(function () {

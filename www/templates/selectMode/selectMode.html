@@ -1,11 +1,26 @@
 <ion-view view-title="Scegli la modalit&agrave; di gioco">
   <ion-content>
-    <ion-list radio-group>
-      <ion-radio ng-model="choice" ng-value="'n'" checked>Giocatore normale</ion-radio>
-      <ion-radio ng-model="choice" ng-value="'t'">Tabellone</ion-radio>
+    <ion-list class="item item-select SelectMode_ionList">
+      <ion-radio ng-model="input.mode" ng-value="'n'" checked>Giocatore normale</ion-radio>
+      <div class="" ng-show="isGiocatoreNormaleSelected()">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Quantit&agrave; di cartelle:
+          </div>
+          <select>
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select>
+        </label>
+      </div>
+      <ion-radio ng-model="input.mode" ng-value="'t'">Tabellone</ion-radio>
 
       <label class="item SelectMode_button">
-        <button class="button button-block button-positive" ng-click="">Gioca!</button>
+        <button class="button button-block button-positive" ng-click="sendUserDataToServer()">Gioca!</button>
       </label>
     </ion-list>
   </ion-content>

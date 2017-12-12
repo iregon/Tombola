@@ -6,7 +6,7 @@ angular.module('starter')
   $location,
   $ionicPopup,
   $window) {
-    
+
   if(!serverManager.connectToServer() === "OK") {
     var alertPopup = $ionicPopup.alert({
       title: '<img src="img/no_internet.png">',
@@ -21,8 +21,7 @@ angular.module('starter')
   $scope.doLogin = function() {
     if($scope.login.nickname !== undefined) {
       var data = {
-        nome: $scope.login.nickname,
-        anunymous: "false",
+        name: $scope.login.nickname
       }
       $rootScope.loginData = data;
       switchToSelectpage();
@@ -41,8 +40,7 @@ angular.module('starter')
 
   $scope.doLoginAnonymous = function() {
     var data = {
-      nome: "",
-      anunymous: "true",
+      name: ""
     }
     $rootScope.loginData = data;
     switchToSelectpage();
