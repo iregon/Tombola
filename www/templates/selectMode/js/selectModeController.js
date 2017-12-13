@@ -26,12 +26,12 @@ angular.module('starter')
       var data = $rootScope.loginData;
       data.action = "add";
       data.type = $scope.input.mode;
-      //Se il giocatore è un giocatore normale data.cartelle = numero di cartelle selezionate
-      //altrimenti data.cartelle = -1
+      if($scope.input.mode === "n") data.cartelle = $scope.input.numCartelle;
+      else data.cartelle = "-1";
 
       console.log(data);
 
-      // serverManager.sendData(data);
+      serverManager.sendData(data);
     }
   }
 
